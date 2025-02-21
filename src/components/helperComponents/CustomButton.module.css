@@ -1,0 +1,33 @@
+.primary {
+  background-color: blue;
+}
+
+.secondary {
+  background-color: gray;
+}
+
+.warning {
+  background-color: red;
+}
+
+.black {
+  background-color: black;
+}
+
+.btn{
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.loading{
+  cursor: not-allowed;
+  padding: 0.5rem;
+}
+
+.loadingImage{
+  width: 1.2rem;
+}

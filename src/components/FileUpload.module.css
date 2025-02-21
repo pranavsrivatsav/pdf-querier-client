@@ -1,0 +1,42 @@
+/* Basic Styling - Customize as needed */
+.uploadContainer {
+  border: 2px dashed #ccc;
+  padding: 20px;
+  border-radius: 8px;
+  width: 30rem;
+  height: 15rem;
+  display: flex;
+  justify-content: center;
+}
+
+.uploadContent {
+  display: flex;
+  flex-direction: column; /* Align items vertically */
+  align-items: center; /* Center horizontally */
+  text-align: center; /* Center text within elements */
+  justify-content: center; /* Center vertically */
+  gap: 8px;
+}
+
+.uploadIcon {
+  margin-bottom: 10px;
+  width: 3rem;
+}
+
+.browseButton {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.errorMessage {
+  color: red;
+  margin-top: 10px;
+}
+
+.fileName {
+  margin-top: 10px;
+}

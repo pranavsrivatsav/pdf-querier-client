@@ -1,0 +1,12 @@
+/* index.css or App.css */
+html {
+  font-size: 16px; /* 1rem = 16px (default) */
+  font-family: "Inter", sans-serif;
+}
+
+/* You can also customize it */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px; /* Adjust for smaller screens */
+  }
+}
