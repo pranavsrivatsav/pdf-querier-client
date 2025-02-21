@@ -10,3 +10,11 @@ html {
     font-size: 14px; /* Adjust for smaller screens */
   }
 }
+
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  

@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 60vw;
+    max-width: 36rem;
+    gap: 1.5rem;
+}
+
+.title {
+    font-size: 2.39125rem;
+    text-transform: uppercase;
+}
+
+.fileName {
+    font-size: 1.5rem;
+}

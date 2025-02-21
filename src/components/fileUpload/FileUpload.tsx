@@ -1,7 +1,7 @@
 import React, { useState, useRef, ChangeEvent, DragEvent } from "react";
 import styles from "./FileUpload.module.css";
-import CustomButton from "./helperComponents/CustomButton";
-import uploadIcon from "../assets/upload-icon.svg";
+import CustomButton from "../helperComponents/CustomButton";
+import uploadIcon from "../../assets/upload-icon.svg";
 
 interface UploadPDFProps {
   onUpload: (file: File) => void;
@@ -91,7 +91,7 @@ const UploadPDF: React.FC<UploadPDFProps> = ({ onUpload }) => {
 
 export default UploadPDF;
 
-const UploadButton = () => {
+const UploadButton: React.FC = () => {
   return (
     <div
       style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}

@@ -15,7 +15,7 @@
   align-items: center; /* Center horizontally */
   text-align: center; /* Center text within elements */
   justify-content: center; /* Center vertically */
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 .uploadIcon {
