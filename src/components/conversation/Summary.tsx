@@ -10,7 +10,7 @@ interface SummaryProps {
 const Summary: React.FC<SummaryProps> = ({ title, content }) => {
     return (
         <div className={styles.container}>
-            <h2 className={styles.title}>{title}</h2>
+            <p className={styles.title}>{title}</p>
             <MarkdownRenderer markdown={content} />
         </div>
     );
