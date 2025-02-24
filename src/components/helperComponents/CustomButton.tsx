@@ -13,10 +13,12 @@ type ButtonProps = {
   onClick: MouseEventHandler<HTMLButtonElement>;
   type: "primary" | "secondary" | "warning" | "black";
   loading?: boolean;
+  size?: "small" | "medium" | "large";
 };
 
-const CustomButton = ({ children, onClick, type, loading }: ButtonProps) => {
+const CustomButton = ({ children, onClick, type, loading, size }: ButtonProps) => {
   let buttonClass = (styles[type] || styles.primary) + " " + styles.btn;
+  buttonClass += " " + (size ? styles[size] : styles.medium);
   let loadingClass = loading ? styles.loading : "";
   const buttonRef = createRef<HTMLButtonElement>();
   const [buttonWidth, setButtonWidth] = useState<string>("auto");

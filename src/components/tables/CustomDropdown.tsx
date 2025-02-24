@@ -17,7 +17,9 @@ const CustomDropdown: React.FC<CustomDropdownProps> = ({
   initialSelectedOption,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(initialSelectedOption || options[0]);
+  const [selectedOption, setSelectedOption] = useState(
+    initialSelectedOption || options[0]
+  );
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -29,8 +31,11 @@ const CustomDropdown: React.FC<CustomDropdownProps> = ({
   };
 
   return (
-    <div className={styles.container} onClick={toggleDropdown}>
-      <div className={styles.display}>{selectedOption.display}</div>
+    <div>
+      <div className={styles.container} onClick={toggleDropdown}>
+        <div className={styles.display}>{selectedOption.display}</div>
+        <div className={styles.arrow}>▼</div>
+      </div>
       <ModalList
         title="Select an option"
         isOpen={isOpen}

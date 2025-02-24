@@ -1,6 +1,8 @@
 // ModalList.tsx
 import styles from "./ModalList.module.css";
 import { option } from "./CustomDropdown";
+import Modal from "../helperComponents/Modal";
+import CustomButton from "../helperComponents/CustomButton";
 
 interface ModalListProps {
   title: string;
@@ -29,34 +31,28 @@ const ModalList = ({
   };
 
   return (
-    <div className={styles.modalOverlay}>
-      <div className={styles.modalContent}>
-        <div className={styles.modalHeader}>
-          <h2>{title}</h2>
-          <button className={styles.modalCloseButton} onClick={onClose}>
-            &times;
-          </button>
-        </div>
-        <ul className={styles.modalList}>
-          {options.map((option) => {
-            return (
-              <li
-                key={`listItem-${option.value}`}
-                className={`${styles.modalListItem} ${
-                  selectedOption === option ? styles.selected : ""
-                }`}
-                onClick={() => handleItemClick(option)}
-              >
-                {option.display}
-              </li>
-            );
-          })}
-        </ul>
-        <div className={styles.modalFooter}>
-          <button onClick={onClose}>Cancel</button>
-        </div>
+    <Modal isOpen={isOpen} onClose={onClose} title={title}>
+      <ul className={styles.modalList}>
+        {options.map((option) => {
+          return (
+            <li
+              key={`listItem-${option.value}`}
+              className={`${styles.modalListItem} ${
+                selectedOption === option ? styles.selected : ""
+              }`}
+              onClick={() => handleItemClick(option)}
+            >
+              {option.display}
+            </li>
+          );
+        })}
+      </ul>
+      <div className={styles.modalFooter}>
+        <CustomButton type="black" size="small" onClick={onClose}>
+          Cancel
+        </CustomButton>
       </div>
-    </div>
+    </Modal>
   );
 };
 

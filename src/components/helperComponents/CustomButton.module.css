@@ -14,13 +14,23 @@
   background-color: black;
 }
 
-.btn{
+.btn {
   color: white;
   border: none;
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 4px;
   font-size: 1rem;
+}
+
+.btn.small {
+  padding: 5px 10px;
+  font-size: 0.8rem;
+}
+
+.btn.large {
+  padding: 15px 30px;
+  font-size: 1.2rem;
 }
 
 .loading{

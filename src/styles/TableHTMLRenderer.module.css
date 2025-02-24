@@ -1,0 +1,55 @@
+/* Table container */
+.tableContainer {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+/* Table */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+}
+
+/* Table Header */
+.table :global(thead) {
+  background-color: #f4f4f4;
+}
+
+.table :global(th) {
+  padding: 12px;
+  text-align: left;
+  font-weight: bold;
+  border: 1px solid #ddd;
+}
+
+/* Table Body */
+.table :global(tbody) {
+  background-color: #fff;
+}
+
+/* Table Rows */
+.table :global(tr) {
+  border-bottom: 1px solid #ddd;
+}
+
+.table :global(tr:nth-child(even)) {
+  background-color: #f9f9f9;
+}
+
+/* Table Cells */
+.table :global(td) {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
