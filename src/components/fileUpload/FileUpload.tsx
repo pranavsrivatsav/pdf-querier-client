@@ -1,13 +1,13 @@
-import React, { useState, useRef, ChangeEvent, DragEvent } from "react";
+import React, { useState, useRef, ChangeEvent, DragEvent, JSX } from "react";
 import styles from "./FileUpload.module.css";
 import CustomButton from "../helperComponents/CustomButton";
 import uploadIcon from "../../assets/upload-icon.svg";
 
-interface UploadPDFProps {
+interface FileUploadProps {
   onUpload: (file: File) => void;
 }
 
-const UploadPDF: React.FC<UploadPDFProps> = ({ onUpload }) => {
+const FileUpload: React.FC<FileUploadProps> = ({ onUpload }) => {
   const [file, setFile] = useState<File | null>(null);
   const [error, setError] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -46,7 +46,6 @@ const UploadPDF: React.FC<UploadPDFProps> = ({ onUpload }) => {
     }
 
     setFile(selectedFile);
-    onUpload(selectedFile);
   };
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -72,37 +71,46 @@ const UploadPDF: React.FC<UploadPDFProps> = ({ onUpload }) => {
         />
 
         <div className={styles.uploadContent}>
-          <img src={uploadIcon} className={styles.uploadIcon} alt="Upload icon" />
+          <img
+            src={uploadIcon}
+            className={styles.uploadIcon}
+            alt="Upload icon"
+          />
           <div className={styles.uploadText}>
             Drag & Drop
             <br />
             or
           </div>
-          <CustomButton type="black"  onClick={handleFileInputClick}>Browse files</CustomButton>
+          <CustomButton type="black" onClick={handleFileInputClick}>
+            Browse files
+          </CustomButton>
         </div>
 
         {error && <div className={styles.errorMessage}>{error}</div>}
       </div>
       {file && <div className={styles.fileName}>{file.name}</div>}
-      <UploadButton />
+      {renderUploadButton()}
     </>
   );
+
+  function renderUploadButton(): JSX.Element {
+    return (
+      <div
+        style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}
+      >
+        <CustomButton
+          loading={false}
+          type="primary"
+          disabled={!file}
+          onClick={() => {
+            file && onUpload(file);
+          }}
+        >
+          Upload
+        </CustomButton>
+      </div>
+    );
+  }
 };
 
-export default UploadPDF;
-
-const UploadButton: React.FC = () => {
-  return (
-    <div
-      style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}
-    >
-      <CustomButton
-        loading={false}
-        type="primary"
-        onClick={() => console.log("Upload button clicked")}
-      >
-        Upload
-      </CustomButton>
-    </div>
-  );
-}
+export default FileUpload;

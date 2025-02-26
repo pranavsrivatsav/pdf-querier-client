@@ -6,7 +6,7 @@ interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   showCloseButton?: boolean;
-  size?: "small" | "medium" | "large";
+  size?: "small" | "medium" | "large" | "fit";
 }
 
 const Modal = (props: React.PropsWithChildren<ModalProps>) => {
@@ -26,6 +26,8 @@ const Modal = (props: React.PropsWithChildren<ModalProps>) => {
       ? ` ${styles.large}`
       : size === "small"
       ? ` ${styles.small}`
+      : size === "fit"
+      ? ` ${styles.fit}`
       : "";
 
   return (

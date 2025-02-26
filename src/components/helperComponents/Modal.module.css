@@ -35,6 +35,10 @@
     max-width: 43.75rem; /* 700px */
 }
 
+.modalContent.fit {
+    max-width: fit-content;
+}
+
 .modalContent h2 {
     margin-top: 0;
 }

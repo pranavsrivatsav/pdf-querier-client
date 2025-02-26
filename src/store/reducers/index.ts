@@ -1,14 +1,12 @@
 import { combineReducers } from 'redux';
-import { configureStore } from '@reduxjs/toolkit';
 // import other reducers here
+import { querierApi } from '../../services/querier';
+import fileReducer from './fileReducer';
 
 const rootReducer = combineReducers({
   // add reducers here
+  [querierApi.reducerPath]: querierApi.reducer,
+  file: fileReducer,
 });
 
-const store = configureStore({
-  reducer: rootReducer,
-  // add other middleware or enhancers here if needed
-});
-
-export default store;
+export default rootReducer;

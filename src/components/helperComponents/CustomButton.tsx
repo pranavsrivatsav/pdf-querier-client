@@ -14,9 +14,10 @@ type ButtonProps = {
   type: "primary" | "secondary" | "warning" | "black";
   loading?: boolean;
   size?: "small" | "medium" | "large";
+  disabled?: boolean;
 };
 
-const CustomButton = ({ children, onClick, type, loading, size }: ButtonProps) => {
+const CustomButton = ({ children, onClick, type, loading, size, disabled }: ButtonProps) => {
   let buttonClass = (styles[type] || styles.primary) + " " + styles.btn;
   buttonClass += " " + (size ? styles[size] : styles.medium);
   let loadingClass = loading ? styles.loading : "";
@@ -41,7 +42,7 @@ const CustomButton = ({ children, onClick, type, loading, size }: ButtonProps) =
       ref={buttonRef}
       className={buttonClass + " " + loadingClass}
       onClick={onClick}
-      disabled={loading}
+      disabled={loading || disabled}
     >
       {!loading && children}
       {loading && (
