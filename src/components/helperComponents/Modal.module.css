@@ -35,6 +35,11 @@
     max-width: 43.75rem; /* 700px */
 }
 
+.modalContent.fill {
+    width:fit-content;
+    max-width: 90%;
+}
+
 .modalContent.fit {
     max-width: fit-content;
 }

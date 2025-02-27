@@ -23,7 +23,7 @@ const TableViewer: React.FC<TableViewerProps> = ({
       isOpen={isOpen}
       onClose={onClose}
       showCloseButton={false}
-      size="large"
+      size="fill"
       title={table.caption}
     >
       <TableHTMLRenderer htmlString={table.content} />
