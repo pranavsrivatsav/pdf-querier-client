@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { StatusResponse, UploadResponse } from "../../types/api";
+import { StatusResponse, TableContentResponse, UploadResponse } from "../../types/api";
 
 interface FileState {
   fileName: string;
@@ -30,9 +30,16 @@ const fileSlice = createSlice({
       state.tables = action.payload.processedData.tables;
       state.summary = action.payload.processedData.summary;
     },
+    setTable(state, action: PayloadAction<{ table: TableContentResponse }>) {
+      if(!state.tables) return;
+
+      //set the table in the tables array
+      const tableIndex = state.tables.findIndex((table) => table.id === action.payload.table.id);
+      state.tables[tableIndex] = action.payload.table;
+    }
   },
 });
 
-export const { setFile, setProcessedData } = fileSlice.actions;
+export const { setFile, setProcessedData, setTable } = fileSlice.actions;
 
 export default fileSlice.reducer;

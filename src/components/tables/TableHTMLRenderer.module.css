@@ -1,7 +1,8 @@
 /* Table container */
 .tableContainer {
-  overflow-x: auto;
-  max-width: 100%;
+    overflow: auto;
+    max-height: calc(100vh - 10rem);
+    width: calc(100%);
 }
 
 /* Table */

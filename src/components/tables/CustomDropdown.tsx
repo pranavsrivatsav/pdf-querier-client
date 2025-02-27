@@ -9,17 +9,16 @@ export type option = {
 
 interface CustomDropdownProps {
   options: option[];
-  initialSelectedOption: option;
+  selectedOption: option;
+  setSelectedOption: (option: option) => void;
 }
 
 const CustomDropdown: React.FC<CustomDropdownProps> = ({
   options,
-  initialSelectedOption,
+  selectedOption,
+  setSelectedOption
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(
-    initialSelectedOption || options[0]
-  );
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
