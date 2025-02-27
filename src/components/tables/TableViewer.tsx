@@ -2,12 +2,12 @@ import React from "react";
 import Modal from "../helperComponents/Modal";
 import TableHTMLRenderer from "./TableHTMLRenderer";
 import CustomButton from "../helperComponents/CustomButton";
-import { Table } from "./TablesPreview";
+import { TableContentResponse } from "../../types/api";
 
 interface TableViewerProps {
   isOpen: boolean;
   onClose: () => void;
-  table: Table;
+  table: TableContentResponse;
 }
 
 const TableViewer: React.FC<TableViewerProps> = ({

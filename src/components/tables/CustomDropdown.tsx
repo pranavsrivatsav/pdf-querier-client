@@ -4,7 +4,7 @@ import ModalList from "./ModalList";
 
 export type option = {
   display: string;
-  value: string;
+  value: string | number;
 };
 
 interface CustomDropdownProps {

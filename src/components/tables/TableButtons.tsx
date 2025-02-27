@@ -1,41 +1,41 @@
-import { Table } from "./TablesPreview";
 import styles from "./TableButtons.module.css";
 import TableViewer from "./TableViewer";
-import { useState } from "react";
 import CustomButton from "../helperComponents/CustomButton";
+import { TableContentResponse } from "../../types/api";
 
-const TableButtons: React.FC<{
-  table: Table;
+type TableButtonsProps = {
   handleDownload: () => void;
-}> = ({ table, handleDownload }) => {
-  const [showAll, setShowAll] = useState<boolean>(false);
+  handleShowAll: (boolShow: boolean) => void;
+  showAll: boolean;
+  table: TableContentResponse;
+};
 
-  const toggleShowAll = () => setShowAll(!showAll);
-
+const TableButtons: React.FC<TableButtonsProps> = ({
+  handleDownload,
+  handleShowAll,
+  showAll,
+  table,
+}) => {
   return (
     <>
       <div className={styles.container}>
         {table.rowCount > 5 && (
           <CustomButton
             type="primary"
-            onClick={toggleShowAll}
+            onClick={() => handleShowAll(true)}
             size="small"
           >
             Show all rows
           </CustomButton>
         )}
-        <CustomButton
-          type="secondary"
-          onClick={handleDownload}
-          size="small"
-        >
+        <CustomButton type="secondary" onClick={handleDownload} size="small">
           Download
         </CustomButton>
       </div>
       {showAll && (
         <TableViewer
           isOpen={showAll}
-          onClose={() => setShowAll(false)}
+          onClose={() => handleShowAll(false)}
           table={table}
         />
       )}

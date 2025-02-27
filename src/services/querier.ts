@@ -1,9 +1,10 @@
 // Need to use the React-specific entry point to import createApi
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import type {
-  UploadRequest,
-  UploadResponse,
-  StatusResponse,
+import {
+  type UploadRequest,
+  type UploadResponse,
+  type StatusResponse,
+  TableContentResponse,
 } from "../types/api";
 
 // Define a service using a base URL and expected endpoints
@@ -21,9 +22,12 @@ export const querierApi = createApi({
     getProcessingStatus: builder.mutation<StatusResponse, UploadResponse["id"]>({
       query: (id) => `status/${id}`,
     }),
+    getTable: builder.mutation<TableContentResponse, TableContentResponse["id"]>({
+      query: (id) => `table/${id}`,
+    })
   }),
 });
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useUploadPdfMutation, useGetProcessingStatusMutation } = querierApi;
+export const { useUploadPdfMutation, useGetProcessingStatusMutation, useGetTableMutation } = querierApi;

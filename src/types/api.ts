@@ -5,19 +5,20 @@ export interface UploadResponse {
 export interface StatusResponse {
     status: 'processing' | 'finished' | 'failed';
     tables?: TableSummary[];
+    summary?: string;
     progress?: number;
     message?: string;
 }
 
 export interface TableSummary {
-    id: number;
+    id: string;
     caption: string;
     content: string; // HTML string with only the first 5 rows
     rowCount: number;
 }
 
 export interface TableContentResponse {
-    id: number;
+    id: string;
     caption: string;
     content: string; // HTML string with all rows
     rowCount: number;

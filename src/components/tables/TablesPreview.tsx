@@ -3,25 +3,34 @@ import styles from "./TablesPreview.module.css";
 import CustomDropdown, { option } from "./CustomDropdown";
 import TableHTMLRenderer from "./TableHTMLRenderer";
 import TableButtons from "./TableButtons";
-
-export interface Table {
-  id: string;
-  caption: string;
-  type: string;
-  content: string;
-  rowCount: number;
-}
+import { TableContentResponse } from "../../types/api";
+import { useGetTableMutation } from "../../services/querier";
+import Loader from "../helperComponents/loader";
 
 interface TablesPreviewProps {
-  tables: Table[];
+  tables: TableContentResponse[];
 }
 
 const TablesPreview: React.FC<TablesPreviewProps> = ({ tables }) => {
-  const [selectedTable, setSelectedTable] = React.useState<Table>(tables[0]);
+  const [selectedTable, setSelectedTable] =
+    React.useState<TableContentResponse>(tables[0]);
   const [showAll, setShowAll] = React.useState<boolean>(false);
+  const [getTableMutation, { isLoading: loadingTable }] = useGetTableMutation();
 
-  const handleShowAll = () => {
-    setShowAll(!showAll);
+  const handleShowAll = (boolShow: boolean): void => {
+    if (!boolShow) {
+      setShowAll(false);
+    } else {
+      getTableMutation(selectedTable.id)
+        .unwrap()
+        .then((data) => {
+          setSelectedTable(data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+      setShowAll(true);
+    }
   };
 
   const handleDownload = () => {};
@@ -39,12 +48,15 @@ const TablesPreview: React.FC<TablesPreviewProps> = ({ tables }) => {
       <TableButtons
         table={selectedTable}
         handleDownload={handleDownload}
+        handleShowAll={handleShowAll}
+        showAll={showAll}
       />
+      {loadingTable && <Loader />}
     </div>
   );
 };
 
-function generateOptions(tables: Table[]): option[] {
+function generateOptions(tables: TableContentResponse[]): option[] {
   return tables.map((table, index) => {
     return {
       display:
