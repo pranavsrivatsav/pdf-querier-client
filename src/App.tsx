@@ -7,6 +7,7 @@ import store from './store';
 import ProcessPdf from './pages/ProcessPdf';
 
 function App() {
+
   return (
     <Provider store={store}>
     <Router>

@@ -1,0 +1,66 @@
+openapi: 3.0.0
+info:
+  title: Dummy API Project
+  version: 1.0.0
+paths:
+  /upload:
+    post:
+      summary: Upload a file
+      requestBody:
+        required: true
+        content:
+          application/pdf:
+            schema:
+              type: string
+              format: binary
+      responses:
+        "200":
+          description: Successful upload
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Upload"
+  /status?{uploadId=uploadId}:
+    get:
+      summary: Get processing status of an upload, if processing completed, get the tables and summary. if processing, get the progress
+      responses:
+        "200":
+          description: Status information
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Status"
+components:
+  schemas:
+    Upload:
+      type: object
+      properties:
+        id:
+          type: string
+    Status:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: ["processing", "finished"]
+        progress:
+          type: integer
+        tables:
+          type: array
+          items:
+            $ref: "#/components/schemas/Table"
+        summary:
+          description: A summary of the uploaded document as a markdown string
+          type: string
+    Table:
+      type: object
+      properties:
+        id:
+          type: string
+        caption:
+          type: string
+        content:
+          description: The content of the table as plain html table
+          type: string
+        rowCount:
+          type: integer

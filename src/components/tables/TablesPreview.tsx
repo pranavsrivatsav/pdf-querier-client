@@ -36,7 +36,7 @@ const TablesPreview: React.FC<TablesPreviewProps> = ({ tables }) => {
       if(!selectedTable) return;
 
       //check if table row count is equal to the numbers of rows in table content
-      if (selectedTable.rowCount === selectedTable.content.length) {
+      if (selectedTable.rowCount === getRowCountFromTableHtml(selectedTable.content)) {
         setShowAll(true);
         return;
       }
@@ -86,6 +86,13 @@ function generateOptions(tables: TableContentResponse[]): option[] {
       value: table.id,
     };
   });
+}
+
+function getRowCountFromTableHtml(html: string): number {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(html, "text/html");
+  const rows = doc.querySelector("tbody")?.querySelectorAll("tr");
+  return rows?.length || 0;
 }
 
 export default TablesPreview;

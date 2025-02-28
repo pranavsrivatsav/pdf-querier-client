@@ -1,9 +1,19 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { StatusResponse, TableContentResponse, UploadResponse } from "../../types/api";
+import { RESET_STORE } from "../middleware";
+
+
+interface FileMetadata {
+  name: File["name"];
+  size: File["size"];
+  type: File["type"];
+  lastModified: File["lastModified"];
+  processed?: boolean;
+}
 
 interface FileState {
   fileName: string;
-  file: File | null;
+  file: FileMetadata | null;
   uploadId: string | null;
   tables: StatusResponse["tables"];
   summary: StatusResponse["summary"];
@@ -22,11 +32,12 @@ const fileSlice = createSlice({
   initialState,
   reducers: {
     setFile(state, action: PayloadAction<{ file: File; uploadId: UploadResponse[`id`] }>) {
-      state.file = action.payload.file;
+      state.file = action.payload.file as FileMetadata;
       state.fileName = action.payload.file.name;
       state.uploadId = action.payload.uploadId;
     },
     setProcessedData(state, action: PayloadAction<{ processedData: StatusResponse }>) {
+      if(state.file) state.file.processed = true;
       state.tables = action.payload.processedData.tables;
       state.summary = action.payload.processedData.summary;
     },
@@ -38,6 +49,9 @@ const fileSlice = createSlice({
       state.tables[tableIndex] = action.payload.table;
     }
   },
+  extraReducers: (builder) => {
+    builder.addCase(RESET_STORE, () => initialState)
+  }
 });
 
 export const { setFile, setProcessedData, setTable } = fileSlice.actions;

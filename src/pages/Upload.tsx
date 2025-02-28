@@ -22,6 +22,10 @@ const Upload = () => {
     },
   ] = useUploadPdfMutation();
 
+  useEffect(()=>{
+    dispatch({type: "RESET_STORE"})
+  }, [])
+
   useEffect(() => {
     //navigate to processing page
     if (uploadedFileRef.current && pdfUploadCompleted) {

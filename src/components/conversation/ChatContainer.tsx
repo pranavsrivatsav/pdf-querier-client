@@ -1,33 +1,19 @@
-import { useState } from "react";
+import React from "react";
 import ChatInput from "./ChatInput";
 import ChatBubble from "./ChatBubble";
 import styles from "./ChatContainer.module.css";
+import { ChatMessage } from "../../types/api";
 
-interface ChatMessage {
-  id: number;
-  text: string;
-  sender: "user" | "bot";
+interface ChatContainerProps {
+  chats: ChatMessage[];
+  handleSend: (message: string) => void;
 }
 
-const ChatContainer = () => {
-  const [messages, setMessages] = useState<ChatMessage[]>([]);
-
-  const handleSend = (message: string) => {
-    const newMessage: ChatMessage = { id: Date.now(), text: message, sender: "user" };
-    setMessages((prev) => [...prev, newMessage]);
-
-    setTimeout(() => {
-      setMessages((prev) => [
-        ...prev,
-        { id: Date.now() + 1, text: "Hello! How can I help?", sender: "bot" },
-      ]);
-    }, 1000);
-  };
-
+const ChatContainer: React.FC<ChatContainerProps> = ({handleSend, chats})  => {
   return (
     <div className={styles.chatContainer}>
       <div className={styles.messages}>
-        {messages.map((msg) => (
+        {chats.map((msg) => (
           <ChatBubble key={msg.id} message={msg.text} sender={msg.sender} />
         ))}
       </div>
