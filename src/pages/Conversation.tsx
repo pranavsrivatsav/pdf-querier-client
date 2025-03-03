@@ -15,16 +15,16 @@ function Conversation() {
     (state) => state.file
   );
 
-  useEffect(()=>{
-    if(!uploadId){
+  useEffect(() => {
+    if (!uploadId) {
       navigate("/upload", { replace: true });
     } else {
       //reset chats on mount
-      dispatch(resetChat())
+      dispatch(resetChat());
     }
   }, [uploadId]);
-  
-  if(!uploadId) return <></>
+
+  if (!uploadId) return <></>;
 
   const { chats, handleSend } = useSocket(uploadId);
 

@@ -1,3 +1,10 @@
+.container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  border: 0.25px solid #d9d6e3
+}
+
 .chatContainer {
   display: flex;
   flex-direction: column;

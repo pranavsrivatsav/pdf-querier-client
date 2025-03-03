@@ -4,9 +4,10 @@ import sendIcon from "../../assets/send.svg"
 
 interface ChatInputProps {
   onSend: (message: string) => void;
+  inputRef: React.RefObject<HTMLInputElement | null>
 }
 
-const ChatInput: React.FC<ChatInputProps> = ({ onSend }) => {
+const ChatInput: React.FC<ChatInputProps> = ({ onSend, inputRef }) => {
   const [message, setMessage] = useState("");
 
   const handleSend = () => {
@@ -24,6 +25,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSend }) => {
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         onKeyDown={(e) => e.key === "Enter" && handleSend()}
+        ref={inputRef}
       />
       <button className={styles.sendButton} onClick={handleSend}>
         <img className={styles.sendIcon} src={sendIcon} onClick={handleSend} alt="Send" />

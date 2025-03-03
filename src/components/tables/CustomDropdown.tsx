@@ -32,7 +32,7 @@ const CustomDropdown: React.FC<CustomDropdownProps> = ({
   return (
     <div>
       <div className={styles.container} onClick={toggleDropdown}>
-        <div className={styles.display}>{selectedOption.display}</div>
+        <span title={selectedOption.display} className={styles.display}>{selectedOption.display}</span>
         <div className={styles.arrow}>▼</div>
       </div>
       <ModalList
