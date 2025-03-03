@@ -2,7 +2,8 @@
   display: flex;
   width: 100%;
   justify-content: center;
-  border-top: 0.25px solid #d9d6e3
+  border-top: 0.25px solid #d9d6e3;
+  padding-top: 0.8rem;
 }
 
 .chatContainer {

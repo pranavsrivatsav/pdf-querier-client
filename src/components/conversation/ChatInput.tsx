@@ -27,7 +27,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSend, inputRef }) => {
         onKeyDown={(e) => e.key === "Enter" && handleSend()}
         ref={inputRef}
       />
-      <button className={styles.sendButton} onClick={handleSend}>
+      <button className={styles.sendButton}>
         <img className={styles.sendIcon} src={sendIcon} onClick={handleSend} alt="Send" />
       </button>
     </div>
