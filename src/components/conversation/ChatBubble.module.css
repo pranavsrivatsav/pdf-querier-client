@@ -1,21 +1,30 @@
 .bubble {
-    max-width: 75%;
-    padding: 10px;
-    border-radius: 15px;
-    word-wrap: break-word;
-    font-size: 14px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .user {
-    background-color: #007aff;
-    color: white;
-    align-self: flex-end;
-  }
-  
-  .bot {
-    background-color: #e5e5ea;
-    color: black;
-    align-self: flex-start;
-  }
-  
+  max-width: 75%;
+  padding: 10px;
+  border-radius: 15px;
+  word-wrap: break-word;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user {
+  background-color: #007aff;
+  color: white;
+  align-self: flex-end;
+}
+
+.bot {
+  background-color: #e5e5ea;
+  color: black;
+  align-self: flex-start;
+}
+
+.loadingImage {
+  width: 1rem;
+}

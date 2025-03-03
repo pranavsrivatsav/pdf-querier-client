@@ -4,9 +4,10 @@ import styles from "./Modal.module.css";
 interface ModalProps {
   title?: string;
   isOpen: boolean;
-  onClose: () => void;
+  onClose?: () => void;
   showCloseButton?: boolean;
   size?: "small" | "medium" | "large" | "fit" | "fill";
+  disableClickEscape: boolean;
 }
 
 const Modal = (props: React.PropsWithChildren<ModalProps>) => {
@@ -16,6 +17,7 @@ const Modal = (props: React.PropsWithChildren<ModalProps>) => {
     children,
     title,
     size = "medium",
+    disableClickEscape = false,
   } = props;
 
   if (!isOpen) return null;
@@ -33,7 +35,10 @@ const Modal = (props: React.PropsWithChildren<ModalProps>) => {
       : ` ${styles.medium}`;
 
   return (
-    <div className={styles.modalOverlay} onClick={onClose}>
+    <div
+      className={styles.modalOverlay}
+      onClick={disableClickEscape ? () => {} : onClose}
+    >
       <div className={modalContentStyle} onClick={(e) => e.stopPropagation()}>
         {title && renderHeader()}
         {children}

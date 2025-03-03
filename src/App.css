@@ -19,5 +19,6 @@ html {
 }
 
 body {
-  padding: 20px;
+  padding: 0px 1.25rem;
+  padding-bottom: 1.25rem;
 }
