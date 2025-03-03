@@ -49,10 +49,6 @@
     margin-top: 0;
 }
 
-.modalContent button:hover {
-    background: #0056b3;
-}
-
 .modalHeader {
     display: flex;
     justify-content: space-between;
