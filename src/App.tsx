@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import store from "./store";
 import ProcessPdf from "./pages/ProcessPdf";
 import Header from "./components/Header";
+import Home from "./pages/Home";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
       <Provider store={store}>
         <Router>
           <Routes>
-            <Route path="/" element={<Upload />} />
+            <Route path="/" element={<Home />} />
             <Route path="/upload" element={<Upload />} />
             <Route path="/process" element={<ProcessPdf />} />
             <Route path="/conversation" element={<Conversation />} />
